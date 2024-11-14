@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikacja do wprowadzania tekstu</title>
+</head>
+<body>
+
+    <h2>Wpisz coś w pole poniżej:</h2>
+    <input type="text" id="userInput" placeholder="Wpisz tekst...">
+    <button onclick="checkInput()">Sprawdź</button>
+
+    <div id="result"></div>
+
+    <script>
+        function checkInput() {
+            const userInput = document.getElementById('userInput').value;
+            const resultDiv = document.getElementById('result');
+
+            // Sprawdzamy, czy użytkownik wpisał coś
+            if (userInput.trim() === "") {
+                resultDiv.textContent = "Nie wpisałeś nic! Proszę wprowadź tekst.";
+                resultDiv.style.color = "red";
+            } else {
+                // Operacje na stringach
+                const textLength = userInput.length;  // Długość tekstu
+                const upperCaseText = userInput.toUpperCase();  // Zamiana na wielkie litery
+                const lowerCaseText = userInput.toLowerCase();  // Zamiana na małe litery
+                const reversedText = userInput.split('').reverse().join('');  // Odwrócenie tekstu
+
+                resultDiv.innerHTML = `
+                    <p><strong>Wpisałeś:</strong> "${userInput}"</p>
+                    <p><strong>Długość tekstu:</strong> ${textLength} znaków</p>
+                    <p><strong>Wielkie litery:</strong> ${upperCaseText}</p>
+                    <p><strong>Małe litery:</strong> ${lowerCaseText}</p>
+                    <p><strong>Odwrócony tekst:</strong> ${reversedText}</p>
+                `;
+                resultDiv.style.color = "green";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
